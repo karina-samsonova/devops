@@ -20,7 +20,7 @@ jobs:
       - name: Build the project
         run: |
           mvn -B package --file pom.xml
-          mkdir staging && cp target/*.exe staging
+          mkdir staging && cp target/*.jar staging
 
       - name: Set up a cache for maven
         uses: actions/cache@v2
