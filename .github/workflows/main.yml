@@ -48,23 +48,24 @@ jobs:
           name: my-artifact
           path: my-artifact
       
-      - name: failure
+      - name: Failure
         if: ${{ failure() }}
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            You failed!
+            ${{ github.actor }} have failed to commit in repository: ${{ github.repository }}
       
-      - name: send mess
+      - name: Success
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           document: my-artifact/**
           message: |
-            ${{ github.actor }} created commit № ${{ github.run_number }}:
-            Repository: ${{ github.repository }}
+            ${{ github.actor }} created an event ${{ github.event_name }} in ${{ github.repository }} repository. 
+            
             See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
-            Download ${{ env.app_name }} Artifacts
+            
+            Download Artifacts: ${{ env.app_name }} 
