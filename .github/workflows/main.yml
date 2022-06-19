@@ -19,7 +19,7 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v1
         with:
-          java-version: 11
+          java-version: 1.8
 
       - name: Build the project
         run: |
@@ -57,7 +57,7 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            ${{ github.actor }} have failed to commit in repository: ${{ github.repository }}
+            You failed!
       
       - name: Success
         uses: appleboy/telegram-action@master
