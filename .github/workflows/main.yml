@@ -64,7 +64,9 @@ jobs:
           token: ${{ secrets.TELEGRAM_TOKEN }}
           document: my-artifact/**
           message: |
-            ${{ github.actor }} created an event ${{ github.event_name }} in ${{ github.repository }} repository. 
+            Repository: ${{ github.repository }} 
+            
+            ${{ github.actor }} created an event: ${{ github.event_name }}
             
             See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
             
