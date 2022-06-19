@@ -1,4 +1,4 @@
-FROM openjdk:17
-COPY . .
-WORKDIR /app
-ENTRYPOINT ["java","Main"]
+FROM java:8
+ADD Main.java .
+RUN javac Main.java
+CMD ["java", "Main"]
