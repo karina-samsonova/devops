@@ -23,7 +23,7 @@ jobs:
 
       - name: Build the project
         run: |
-          mvn -B package --file pom.xml
+          mvn -B package --file pomm.xml
           mkdir staging && cp target/*.jar staging
 
       - name: Set up a cache for maven
