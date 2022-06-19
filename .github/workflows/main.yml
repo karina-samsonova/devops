@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout the main branch
@@ -42,7 +42,7 @@ jobs:
   
   telergam:
     needs: build
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v3
