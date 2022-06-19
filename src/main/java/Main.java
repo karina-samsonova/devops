@@ -1,8 +1,10 @@
 import java.util.HashMap;
 
+import static java.lang.Thread.sleep;
+
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         // write your code here
         HashMap<Integer, String> alphabet = new HashMap<>();
         alphabet.put(1,"Aa");
@@ -16,6 +18,7 @@ public class Main {
         it.remove();    //удалили первый элемент из словаря
         while(it.hasNext()){
             System.out.println(it.next());
+            sleep(1000);
         }
     }
 }
