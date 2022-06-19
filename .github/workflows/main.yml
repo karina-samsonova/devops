@@ -18,20 +18,29 @@ jobs:
           java-version: 1.8
 
       - name: Build the project
-        run: mvn -B package --file pom.xml
+        run: |
+          mvn -B package --file pom.xml
+          mkdir staging && cp target/*.jar staging
 
-      - name: Upload Artefact
+      - name: Set up a cache for maven
+        uses: actions/cache@v2
+        with:
+          path: ~./m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          retore-keys: ${{ runner.os }}-m2
+      
+      - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
           name: my-artifact
-          path: "*.exe"
+          path: staging
           retention-days: 5
   
   telergam:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: download artefact
+      - name: Download artifact
         uses: actions/download-artifact@v3
         with:
           name: my-artifact
