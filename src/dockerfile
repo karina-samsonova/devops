@@ -1,5 +1,0 @@
-FROM openjdk:8
-ENV DB_URL=$DB_URL
-COPY . .
-WORKDIR /app
-ENTRYPOINT ["java","Main"]
